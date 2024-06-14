@@ -1,0 +1,11 @@
+spring:
+  rabbitmq:
+    host: master # 你的虚拟机IP
+    port: 5672 # 端口
+    virtual-host: /mq-study # 虚拟主机
+    username: mq-study # 用户名
+    password: root # 密码
+
+    listener:
+      simple:
+        prefetch: 1
