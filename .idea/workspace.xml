@@ -4,16 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1295a662-382b-41e4-936f-d91aac763f83" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="1295a662-382b-41e4-936f-d91aac763f83" name="Changes" comment="feat:init">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/spring-amqp/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/spring-amqp/src/main/java/com/zjq/AmqpApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-amqp/src/main/java/com/zjq/config/DefaultConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-amqp/src/main/java/com/zjq/consumer/listener/DirectListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-amqp/src/main/java/com/zjq/consumer/listener/FanoutListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-amqp/src/main/java/com/zjq/consumer/listener/TestListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-amqp/src/main/java/com/zjq/consumer/listener/TopicListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-amqp/src/main/java/com/zjq/consumer/listener/config/DirectConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-amqp/src/main/java/com/zjq/consumer/listener/config/MessageConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-amqp/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-amqp/src/test/java/com/zjq/TestRun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +32,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
@@ -52,13 +61,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.TestRun.test.executor": "Run",
+    "JUnit.TestRun.testDirectExchange.executor": "Run",
+    "JUnit.TestRun.testFanoutExchange.executor": "Run",
+    "JUnit.TestRun.testQueue.executor": "Run",
+    "JUnit.TestRun.testSendMap.executor": "Run",
+    "JUnit.TestRun.testTopicExchange.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "Maven.spring-study [clean].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.AmqpApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "spring-amqp",
     "jdk.selected.JAVA_MODULE": "1.8.0_181",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -69,11 +88,81 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.42807823",
-    "settings.editor.selected.configurable": "MavenSettings",
+    "settings.build.tools.auto.reload": "SELECTIVE",
+    "settings.editor.selected.configurable": "build.tools",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.zjq.consumer.listener" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AmqpApplication">
+    <configuration name="TestRun.testDirectExchange" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-amqp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zjq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.zjq" />
+      <option name="MAIN_CLASS_NAME" value="com.zjq.TestRun" />
+      <option name="METHOD_NAME" value="testDirectExchange" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRun.testFanoutExchange" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-amqp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zjq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.zjq" />
+      <option name="MAIN_CLASS_NAME" value="com.zjq.TestRun" />
+      <option name="METHOD_NAME" value="testFanoutExchange" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRun.testSendMap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-amqp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zjq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.zjq" />
+      <option name="MAIN_CLASS_NAME" value="com.zjq.TestRun" />
+      <option name="METHOD_NAME" value="testSendMap" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRun.testTopicExchange" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-amqp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zjq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.zjq" />
+      <option name="MAIN_CLASS_NAME" value="com.zjq.TestRun" />
+      <option name="METHOD_NAME" value="testTopicExchange" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AmqpApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="spring-amqp" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.zjq.AmqpApplication" />
@@ -90,6 +179,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.AmqpApplication" />
+        <item itemvalue="Spring Boot.AmqpApplication" />
+        <item itemvalue="JUnit.TestRun.testSendMap" />
+        <item itemvalue="JUnit.TestRun.testTopicExchange" />
+        <item itemvalue="JUnit.TestRun.testFanoutExchange" />
       </list>
     </recent_temporary>
   </component>
@@ -110,8 +203,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718333973149</updated>
-      <workItem from="1718333974269" duration="2205000" />
+      <workItem from="1718333974269" duration="12264000" />
     </task>
+    <task id="LOCAL-00001" summary="feat:init">
+      <option name="closed" value="true" />
+      <created>1718336400378</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718336400378</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,10 +224,26 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat:init" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:init" />
   </component>
 </project>
