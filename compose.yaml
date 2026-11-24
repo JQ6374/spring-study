@@ -1,0 +1,21 @@
+name: spring-study
+services:
+  rabbitmq:
+    image: rabbitmq:4.4.1-management
+    hostname: rabbitmq
+    ports:
+      - "127.0.0.1:${RABBITMQ_PORT:-5673}:5672"
+      - "127.0.0.1:${RABBITMQ_MANAGEMENT_PORT:-15673}:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME:-learner}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-learner-local}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+volumes:
+  rabbitmq-data:

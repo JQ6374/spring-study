@@ -1,11 +1,31 @@
-spring:
-  rabbitmq:
-    host: master # 你的虚拟机IP
-    port: 5672 # 端口
-    virtual-host: /mq-study # 虚拟主机
-    username: mq-study # 用户名
-    password: root # 密码
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${SERVER_PORT:8080}
 
+spring:
+  application:
+    name: rabbitmq-learning-lab
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    # 本项目宿主机 5673 -> 容器 AMQP 5672，避开已有 RabbitMQ。
+    # 管理界面使用宿主机 15673 -> 容器 HTTP 15672。
+    port: ${RABBITMQ_PORT:5673}
+    username: ${RABBITMQ_USERNAME:learner}
+    password: ${RABBITMQ_PASSWORD:learner-local}
+    virtual-host: ${RABBITMQ_VHOST:/}
+    connection-timeout: 5s
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      mandatory: true
     listener:
       simple:
+        auto-startup: ${RABBITMQ_LISTENERS_ENABLED:true}
+        acknowledge-mode: auto
         prefetch: 1
+        # 不无限重新入队；失败消息进入配置好的死信队列。
+        default-requeue-rejected: false
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
